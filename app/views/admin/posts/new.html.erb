@@ -17,13 +17,13 @@
 
 	<div class="form-group">
 		<%= f.label :category %>
-		<%= f.select :category_id. Category.all.collect { |x| [x.name, x.id] }, {:include_blank = > 'Select One'} class: 'form-control' %>
+		<%= f.select :category_id, Category.all.collect { |x| [x.name, x.id] }, {:include_blank => 'Select One'}, class: 'form-control' %>
 	</div>
 	<br>
 
 	<div class="form-group">
 		<%= f.label :author %>
-		<%= f.select :user_id, User.all.collect {|x| [x.name, x.id]}, {:include_blank = > 'Select One' }, class: 'form-control' %>
+		<%= f.select :user_id, User.all.collect { |x| [x.name, x.id] }, {:include_blank => 'Select One' }, class: 'form-control' %>
 	</div>
 	<br>
 
@@ -45,6 +45,6 @@
 	</div>
 	<br>
 	<%= f.submit "Submit", class:'btn btn-primary' %>
-	<%= link_to "Cancel", admin_categories_path, class:'btn btn-default' %>
+	<%= link_to "Cancel", admin_posts_path, class:'btn btn-default' %>
 	</div>
 <% end %>

@@ -2,6 +2,7 @@ class Admin::PostsController < Admin::ApplicationController
    def new
     @page_title = 'Add Post'
     @post = Post.new
+    @users = User.all
   end
 
   def create
@@ -38,11 +39,15 @@ class Admin::PostsController < Admin::ApplicationController
   end
 
   def index
-    @posts = Post.all
+    if params[:search]
+      @posts = Post.search(params[:search]).all.order('created_at DESC').paginate(:per_page => 10, page => params[:page])
+    else
+      @posts = Post.all.order('created_at DESC').paginate(:per_page => 10, page => params[:page])
+    end
   end
 
   private
   def post_params
-    params.require(:post).permit(:title, :category_id, :user_id, :user_id, :tags, :image, :body)
+    params.require(:post).permit(:title, :category_id, :user_id, :tags, :image, :body)
   end
 end
