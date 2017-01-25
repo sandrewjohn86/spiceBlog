@@ -1,51 +1,24 @@
-<div class="row">
-              <div class="col-md-6">
-                <div class="post">
-                  <img src="img/rails1.jpg">
-                  <div class="post-content">
-                    <h3>Lorem Epsum</h3>
-                    <small>Posted by Andrew on January 22 2017</small>
-                    <p>leo egestas, lacinia imperdiet mi. Aliquam volutpat leo sit amet magna pharetra finibus. Proin ac sapien vel enim tempus aliquet. Morbi tempus nisl vel metus suscipit porta. Suspendisse scelerisque blandit velit vitae iaculis. Donec ac suscipit lectus.</p>
-                    <a class="btn btn-default btn-block">Read More</a>
-                  </div>
-                </div>
-              </div>
+<div id="posts-index">
+  <% if @posts.exists? %>
+    <% @posts.each_slice(2) do |post| %>
+      <div class="row">
+        <% post.each do |post| %>
+          <div class="col-md-6">
+            <div class="post">
+              <%= image_tag post.image.url, width:'100' %>
+              <div class="post-content">
+                <h3><%= post.title %></h3>
+                <small>Posted by <%= post.user.name %> on <%= post.created_at.to_time.strftime('%B %e at %l:%M %p') %></small>
 
-              <div class="col-md-6">
-                <div class="post">
-                  <img src="img/rails1.jpg">
-                  <div class="post-content">
-                    <h3>Lorem Epsum</h3>
-                    <small>Posted by Andrew on January 22 2017</small>
-                    <p>leo egestas, lacinia imperdiet mi. Aliquam volutpat leo sit amet magna pharetra finibus. Proin ac sapien vel enim tempus aliquet. Morbi tempus nisl vel metus suscipit porta. Suspendisse scelerisque blandit velit vitae iaculis. Donec ac suscipit lectus.</p>
-                    <a class="btn btn-default btn-block">Read More</a>
-                  </div>
-                </div>
+                <%= raw post.body.truncate(200) %>
+                <%= link_to "Read More", post_path(post), class: 'btn btn-default' %>
               </div>
             </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="post">
-                  <img src="img/rails1.jpg">
-                  <div class="post-content">
-                    <h3>Lorem Epsum</h3>
-                    <small>Posted by Andrew on January 22 2017</small>
-                    <p>leo egestas, lacinia imperdiet mi. Aliquam volutpat leo sit amet magna pharetra finibus. Proin ac sapien vel enim tempus aliquet. Morbi tempus nisl vel metus suscipit porta. Suspendisse scelerisque blandit velit vitae iaculis. Donec ac suscipit lectus.</p>
-                    <a class="btn btn-default btn-block">Read More</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="post">
-                  <img src="img/rails1.jpg">
-                  <div class="post-content">
-                    <h3>Lorem Epsum</h3>
-                    <small>Posted by Andrew on January 22 2017</small>
-                    <p>leo egestas, lacinia imperdiet mi. Aliquam volutpat leo sit amet magna pharetra finibus. Proin ac sapien vel enim tempus aliquet. Morbi tempus nisl vel metus suscipit porta. Suspendisse scelerisque blandit velit vitae iaculis. Donec ac suscipit lectus.</p>
-                    <a class="btn btn-default btn-block">Read More</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </div>
+        <% end %>    
+      </div> 
+    <% end %>
+  <% else %>
+    <p>No posts in this category yet</p>
+  <% end %>
+</div>

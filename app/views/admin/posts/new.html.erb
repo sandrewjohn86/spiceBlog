@@ -1,9 +1,7 @@
-<script>
-	$(function(){
-		$('textarea#edit').editable({
-			inlineMode: false
-		})
-	});
+  <script>
+  $(function() {
+    $('textarea#froala-editor').froalaEditor()
+  });
 </script>
 
 <h2>Add New Post</h2>
@@ -49,7 +47,7 @@
 
 	<div class="form-group">
 		<%= f.label :body %>
-		<%= f.text_area :body, class: 'form-control', id: 'edit' %>
+		<%= f.text_area :body, class: 'form-control', id: 'froala-editor' %>
 	</div>
 	<br>
 	<%= f.submit "Submit", class:'btn btn-primary' %>
