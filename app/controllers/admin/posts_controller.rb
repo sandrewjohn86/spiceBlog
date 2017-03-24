@@ -1,5 +1,7 @@
 class Admin::PostsController < Admin::ApplicationController
-   def new
+  before_filter :verify_logged_in
+
+  def new
     @page_title = 'Add Post'
     @post = Post.new
     @users = User.all
@@ -13,8 +15,8 @@ class Admin::PostsController < Admin::ApplicationController
     end
 
     if @post.save
-        flash[:notice] = 'Post Created'
-        redirect_to admin_posts_path
+      flash[:notice] = 'Post Created'
+      redirect_to admin_posts_path
     else
         render 'new'
     end

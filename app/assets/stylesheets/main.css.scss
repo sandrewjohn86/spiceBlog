@@ -27,9 +27,14 @@ body{
 	color: #ff953f;
 }
 
-.navbar a.navbar-brand-hover{
+.navbar a.navbar-brand:hover{
 	margin-top: !important;
 }
+
+/*.navbar a.navbar-brand{
+	width: 100%;
+}*/
+
 
 .navbar ul{
 	margin-top: 22px;
@@ -107,6 +112,14 @@ small{
 	background: $primary-color;
 	color: #fff;
 	display: block;
+	margin: 10px 0;
+	padding: 5px 10px;
+}
+
+.navbar .navbar-brand small{
+	background: $primary-color;
+	color: #fff;
+	display: inline;
 	margin: 10px 0;
 	padding: 5px 10px;
 }
