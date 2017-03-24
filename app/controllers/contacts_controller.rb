@@ -13,5 +13,4 @@ class ContactsController < ApplicationController
       render :new
     end
   end
-  end
 end
